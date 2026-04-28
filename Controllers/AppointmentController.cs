@@ -1,21 +1,22 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using MyAppointmentApp.Data;
 using MyAppointmentApp.Models;
 
 namespace MyAppointmentApp.Controllers
 {
-    public class HomeController : Controller
+    public class AppointmentController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly AppointmentDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public AppointmentController(AppointmentDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
-
         public IActionResult Index()
         {
-            return View();
+            var appointments= _context.Appointments.ToList();
+            return View(appointments);
         }
 
         public IActionResult Privacy()
