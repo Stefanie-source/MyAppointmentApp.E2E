@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace MyAppointmentApp
 {
     public class Program
@@ -8,6 +10,10 @@ namespace MyAppointmentApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<Data.AppointmentDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString ("DefaultConnection"))
+                );
 
             var app = builder.Build();
 
