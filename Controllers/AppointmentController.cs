@@ -17,11 +17,20 @@ namespace MyAppointmentApp.Controllers
         {
             var appointments= _context.Appointments.ToList();
             return View(appointments);
-        }
-
-        public IActionResult Privacy()
+        } 
+        public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]  
+        public IActionResult Create(Appointment appointment)
+        {
+
+            _context.Appointments.Add(appointment);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

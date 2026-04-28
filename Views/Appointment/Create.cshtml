@@ -1,0 +1,17 @@
+﻿
+@model Appointment
+<h1>Create Appointment</h1>
+<form asp-action="Create" method="post">
+
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" id="Name" name="Name"/>
+    </div>
+
+    <div class="form-group">
+        <label>Date</label>
+        <input type="datetime-local" class="form-control" id="Date" name="Date" />
+    </div>
+
+    <button type="submit" class="btn btn-primary" >Save</button>
+</form>
